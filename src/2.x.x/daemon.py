@@ -1,11 +1,13 @@
 #!/usr/bin/env python
-
-import sys, os, time, atexit
+import sys
+import os
+import time
+import atexit
 from signal import SIGTERM 
 
-class Daemon:
+class Daemon(object):
 	"""
-	A generic daemon class.
+	A generic daemon class for Python 2.x.x
 	
 	Usage: subclass the Daemon class and override the run() method
 	"""
@@ -17,7 +19,7 @@ class Daemon:
 	
 	def daemonize(self):
 		"""
-		do the UNIX double-fork magic, see Stevens' "Advanced 
+		UNIX double fork mechanism, see Stevens' "Advanced 
 		Programming in the UNIX Environment" for details (ISBN 0201563177)
 		http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
 		"""
@@ -124,7 +126,9 @@ class Daemon:
 
 	def run(self):
 		"""
-		You should override this method when you subclass Daemon. It will be called after the process has been
-		daemonized by start() or restart().
+		You should override this method when you subclass Daemon.
+		
+		It will be called after the process has been daemonized by 
+		start() or restart().
 		"""
 		

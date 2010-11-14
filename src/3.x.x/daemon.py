@@ -1,17 +1,21 @@
-"""Generic linux daemon base class for python 3.x."""
-
-import sys, os, time, atexit, signal
+#!/usr/bin/env python
+import sys 
+import os 
+import time 
+import atexit
+import signal
 
 class Daemon:
-	"""A generic daemon class.
+	"""
+	A generic daemon class for Python 3.x.x
 
-	Usage: subclass the daemon class and override the run() method."""
-
+	Usage: subclass the daemon class and override the run() method.
+	"""
 	def __init__(self, pidfile): self.pidfile = pidfile
 	
 	def daemonize(self):
 		"""Deamonize class. UNIX double fork mechanism."""
-
+        
 		try: 
 			pid = os.fork() 
 			if pid > 0:
@@ -115,8 +119,10 @@ class Daemon:
 		self.start()
 
 	def run(self):
-		"""You should override this method when you subclass Daemon.
+		"""
+		You should override this method when you subclass Daemon.
 		
 		It will be called after the process has been daemonized by 
-		start() or restart()."""
+		start() or restart().
+		"""
 		
