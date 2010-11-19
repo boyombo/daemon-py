@@ -1,4 +1,6 @@
+Daemon-Python, lightweight and no-nonsense POSIX daemon library.
 Copyright (c) 2010 Fredrick Galoso http://stackd.com/
+
 Based on source code (public domain) by Sander Marechal
 http://www.jejik.com/articles/2007/02/a_simple_unix_linux_daemon_in_python/
 
