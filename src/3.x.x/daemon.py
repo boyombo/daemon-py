@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Daemon-Python (0.1)
+Daemon-Python (0.2)
 Lightweight and no-nonsense POSIX daemon library
 https://github.com/stackd/daemon-py
 
@@ -24,15 +24,17 @@ import atexit
 import signal
 
 class Daemon:
-    """
-    A generic daemon class for Python 3.x.x
-
-    Usage: subclass the daemon class and override the run() method.
+    """ A generic daemon class for Python 3.x.x
+    
+    Usage: subclass the Daemon class and override the run() method
     """
     def __init__(self, pidfile): self.pidfile = pidfile
     
     def daemonize(self):
-        """Deamonize class. UNIX double fork mechanism."""
+        """UNIX double fork mechanism. 
+        
+        See Stevens' "Advanced Programming in the UNIX Environment" for details (ISBN 0201563177).
+        """
         
         try: 
             pid = os.fork() 
@@ -133,13 +135,13 @@ class Daemon:
 
     def restart(self):
         """Restart the daemon."""
+        
         self.stop()
         self.start()
         
     def status(self):
-        """
-        Return the daemon state.
-        """
+        """Return the daemon state."""
+        
         # Check for a pidfile to see if the daemon is already running
         try:
             with open(self.pidfile,'r') as pf:
@@ -156,8 +158,7 @@ class Daemon:
             sys.stdout.write(message.format(self.pidfile, self.__class__.__name__))
 
     def run(self):
-        """
-        You should override this method when you subclass Daemon.
+        """Override this method when you subclass Daemon.
         
         It will be called after the process has been daemonized by 
         start() or restart().

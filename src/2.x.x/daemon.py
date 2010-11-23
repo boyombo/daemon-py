@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Daemon-Python (0.1)
+Daemon-Python (0.2)
 Lightweight and no-nonsense POSIX daemon library
 https://github.com/stackd/daemon-py
 
@@ -24,8 +24,7 @@ import atexit
 from signal import SIGTERM 
 
 class Daemon(object):
-    """
-    A generic daemon class for Python 2.x.x
+    """ A generic daemon class for Python 2.x.x
     
     Usage: subclass the Daemon class and override the run() method
     """
@@ -36,10 +35,11 @@ class Daemon(object):
         self.pidfile = pidfile
     
     def daemonize(self):
+        """UNIX double fork mechanism. 
+        
+        See Stevens' "Advanced Programming in the UNIX Environment" for details (ISBN 0201563177).
         """
-        UNIX double fork mechanism, see Stevens' "Advanced 
-        Programming in the UNIX Environment" for details (ISBN 0201563177)
-        """
+        
         try: 
             pid = os.fork() 
             if pid > 0:
@@ -83,10 +83,9 @@ class Daemon(object):
         os.remove(self.pidfile)
 
     def start(self):
-        """
-        Start the daemon
-        """
-        # Check for a pidfile to see if the daemon is already running
+        """Start the daemon."""
+        
+        #Check for a pidfile to see if the daemon is already running.
         try:
             pf = file(self.pidfile,'r')
             pid = int(pf.read().strip())
@@ -104,10 +103,9 @@ class Daemon(object):
         self.run()
 
     def stop(self):
-        """
-        Stop the daemon
-        """
-        # Get the pid from the pidfile
+        """Stop the daemon."""
+        
+        #Get the pid from the pidfile.
         try:
             pf = file(self.pidfile,'r')
             pid = int(pf.read().strip())
@@ -135,16 +133,14 @@ class Daemon(object):
                 sys.exit(1)
 
     def restart(self):
-        """
-        Restart the daemon
-        """
+        """Restart the daemon."""
+        
         self.stop()
         self.start()
         
     def status(self):
-        """
-        Return the daemon state.
-        """
+        """Return the daemon state."""
+        
         # Check for a pidfile to see if the daemon is already running
         try:
             pf = file(self.pidfile,'r')
@@ -161,8 +157,7 @@ class Daemon(object):
             sys.stdout.write(message % (self.pidfile, self.__class__.__name__))
 
     def run(self):
-        """
-        You should override this method when you subclass Daemon.
+        """Override this method when you subclass Daemon.
         
         It will be called after the process has been daemonized by 
         start() or restart().
