@@ -7,6 +7,7 @@ Inspired by [Sander Marechal][1].
 MIT/X11 - See [LICENSE][2]
 
 ##Getting Started
+
 1. **Installation**
 
 		# git clone https://github.com/stackd/daemon-py.git
