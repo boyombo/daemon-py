@@ -14,6 +14,7 @@ MIT/X11 - See [LICENSE][2]
 		# python setup.py install
 
  *Note: Daemon-Python, as of version 0.2, has only been tested on Linux. The setup.py script will automatically detect if the underlying platform is compatible, as well as determine the appropriate version of Python.*
+
 2. **Instantiation**
 
 		import daemon
@@ -23,6 +24,7 @@ MIT/X11 - See [LICENSE][2]
 			def run(self):
 			"""Define what to daemonize by implementing run() method."""
 			...
+
 3. **Implementing control**
 
 	Finally, we want to be able to control our daemon.
