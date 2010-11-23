@@ -1,10 +1,10 @@
 #Daemon-Python (0.2)
 Lightweight and no-nonsense POSIX daemon library. Extensible, complete with process forking and [PID][4] management.
 
-Inspired by [Sander Marechal][1].
+Inspired by [Sander Marechal][2].
 
 ##License
-MIT/X11 - See [LICENSE][2]
+MIT/X11 - See [LICENSE][1]
 
 ##Getting Started
 
@@ -23,7 +23,7 @@ MIT/X11 - See [LICENSE][2]
 		"""Subclass Daemon-Python."""
 		...
 			def run(self):
-			"""Define what to daemonize by implementing run() method."""
+			"""Define what to daemonize by implementing the run() method."""
 			...
 
 2. **Implementing control**
