@@ -24,7 +24,7 @@ setup(
     license = 'MIT/X11',
     platforms='Linux',
     url = 'https://github.com/stackd/daemon-py',
-	download_url = 'https://github.com/stackd/daemon-py.git',
+    download_url = 'https://github.com/stackd/daemon-py.git',
     package_dir = package_dir,
     py_modules = [
         'daemon',
